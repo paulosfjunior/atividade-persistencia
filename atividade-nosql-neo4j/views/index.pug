@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  if !nMenu
+    div.bt.login
+      a(href="/c").bt-login
+        i(class="fas fa-user")
+        //- i(class="fab fa-facebook-square")
+      a(href="/auth/facebook").bt-login
+        i(class="fas fa-user")
+        i(class="fab fa-facebook-square")
+      a(href="/g").bt-grafo
+        i(class="fas fa-project-diagram")

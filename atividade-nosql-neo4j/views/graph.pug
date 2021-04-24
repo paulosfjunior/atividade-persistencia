@@ -1,0 +1,87 @@
+extends layout
+
+block content
+  div.bt.home
+    a(href="/").bt-home
+      i(class="fas fa-home")
+  div(id="grafo", class="grafo")
+  script(src="/javascripts/echarts.min.js")
+  script(type="text/javascript").
+    const elemt = document.getElementById('grafo');
+    const grafo = echarts.init(elemt);
+
+    const base = !{JSON.stringify(gf)};
+    const graph = {
+      nodes: base.dados,
+      links: base.relacoes};
+    
+    const categoria = base.categorias;
+
+    graph.nodes.forEach((node) => {
+      node.category = node.categorias;
+      node.symbolSize /= 1.5;
+      node.label = {
+        normal: {
+          show: node.symbolSize > 30
+        }
+      };
+    });
+    config = {
+      title: {
+        text: 'Atividade NoSql Neo4J',
+        subtext: 'Amigos Facebook',
+        top: 'bottom',
+        left: 'left'
+      },
+      tooltip: {
+        formatter: (obj) => {
+          if (obj.dataType === 'node') {
+            return `${obj.data.name}<br />(${obj.data.email})`
+          } else {
+            return `${obj.data.name}`
+          }
+        }
+      },
+      legend: [{
+        data: categoria.map((a) => a.name)
+      }],        
+      animationDuration: 1500,
+      animationEasingUpdate: 'quinticInOut',
+      series : [{
+        type: 'graph',
+        layout: 'force',
+        data: graph.nodes,
+        links: graph.links,
+        categories: categoria,
+        roam: true,
+        focusNodeAdjacency: true,
+        itemStyle: {
+          normal: {
+            borderColor: '#fff',
+            borderWidth: 1,
+            shadowBlur: 10,
+            shadowColor: 'rgba(0, 0, 0, 0.3)'
+          }
+        },
+        label: {
+          position: 'right',
+          formatter: '{b}'
+        },
+        lineStyle: {
+          color: 'source',
+          curveness: 0.3
+        },
+        emphasis: {
+          lineStyle: {
+            width: 10
+          }
+        },
+        force: {
+          repulsion: 200
+        }
+      }]
+    };
+
+    if (config && typeof config === "object") {
+      grafo.setOption(config, true);
+    }

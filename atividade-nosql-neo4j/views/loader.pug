@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  script(src="/socket.io/socket.io.js")
+  script(type="text/javascript").
+  
+    var socket = io();
+    socket.on('finish', (u) => {
+      window.location.href = u.url;
+    });
+
+  .col-xs-12
+    h1.titulo Copiando Dados
+    div.cs_loader_snake
+      div
+      div
+      div
+      div
+      div
+      div
+      div
+      div
+      div
+      div
+      div

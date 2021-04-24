@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <title><%= titulo %></title>
+  </head>
+  <body>
+    <div class="pagina">
+      <h1><%= titulo %></h1>
+      <ul class="menu">
+        <li class="item">
+          <a class="btn btn-info" href="/">Inicio</a>
+        </li>
+        <li class="item">
+          <a class="btn btn-info" href="/clientes/r">Cadastrar Clientes</a>
+        </li>
+      </ul>
+      <%if (clientes.length > 0) { %>
+        <table>
+          <tr class="titulo">
+            <th class="icone">Editar</th>
+            <th class="icone">Excluir</th>
+            <th class="texto">Cliente</th>
+          </tr>
+          <% for(var i = 0; i < clientes.length; i++) { %>
+            <tr class="dados">
+              <td class="icone"><a class="btn btn-atencao icone" href="/clientes/e/<%= clientes[i] %>"><i class="fas fa-pen"></i></a></td>
+              <td class="icone"><a class="btn btn-perigo icone" href="/clientes/d/<%= clientes[i] %>"><i class="fas fa-trash"></i></a></td>
+              <td class="texto"><%= clientes[i] %></td>
+            </tr>
+          <% } %>
+        </table>
+      <% } else { %>
+        <h3>Não existe cliente cadastrado.</h3>
+      <% } %>
+    </div>
+</html>

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  div.signup-form
+    form(action="/c", method="post")
+      h2 Cadastrar Familia
+
+      div.form-group
+        input(type="text", class="form-control", name="origem", placeholder="Nome da Pessoa", required)
+      
+      div.form-group
+        select(class="form-control", name="relacao", required)
+          option(value="" selected disabled) Relação
+          option(value="Máe") Máe
+          option(value="Pai") Pai 
+          option(value="Filho") Filho
+          option(value="Filha") Filha
+          option(value="Cônjugue") Cônjugue
+
+      div.form-group
+        input(type="text", class="form-control", name="destino", placeholder="Nome da Pessoa", required)
+
+      div.form-group
+        button(type="submit", class="btn btn-success btn-lg btn-block") Cadastrar
+        a(href="/", class="btn btn-danger btn-lg btn-block") Cancelar

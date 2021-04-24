@@ -1,0 +1,22 @@
+.Price{
+    border-color: green;
+    padding: 1vh;
+    border-radius: 5px;
+    background-color: inherit;
+}
+.Price.B{
+    box-shadow: 0 0 0 1px green;
+}
+.B::before{
+    content: "R$: "
+}
+.produto{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 2px;
+    padding: 2%
+}
+.produto input{
+    width: 7vh
+}

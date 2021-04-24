@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <script src="/javascripts/javascript.js"></script>
+    <title><%= titulo %></title>
+  </head>
+  <body>
+    <div class="pagina">
+      <h1><%= titulo %></h1>
+      <form action="/itens/r" method="post">
+        <div>
+          <label for="item">Item</label>
+        </div>
+        <div>
+          <input type="text" name="item" id="item" required autofocus>
+        </div>
+        <div>
+          <label for="preco">Preço</label>
+        </div>
+        <div>
+          <input type="text" name="preco" id="preco" onkeypress="mascara(this, moeda)" required>
+        </div>
+        <div>
+          <a class="btn btn-perigo" href="/itens">Cancelar</a>
+          <button class="btn btn-sucesso" type="submit">Confirmar</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
